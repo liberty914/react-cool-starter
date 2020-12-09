@@ -44,6 +44,8 @@ module.exports = {
         devDependencies: true,
       },
     ],
+    "import/prefer-default-export": "off",
+    "import/no-default-export": "error",
     "@typescript-eslint/no-use-before-define": "error",
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/no-explicit-any": "off",

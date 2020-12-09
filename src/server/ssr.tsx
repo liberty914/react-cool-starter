@@ -10,11 +10,11 @@ import chalk from "chalk";
 import { Request, Response, NextFunction } from "express";
 import { Action } from "@reduxjs/toolkit";
 
-import createStore from "../store";
-import renderHtml from "./renderHtml";
-import routes from "../routes";
+import { createStore } from "../app/store";
+import { renderHtml } from "./render-html";
+import { ROUTE_LIST } from "../app/_bootstrap/route-list";
 
-export default async (
+export const ssr = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -24,7 +24,7 @@ export default async (
   // The method for loading data from server-side
   const loadBranchData = (): Promise<any> => {
     // @ts-expect-error
-    const branch = matchRoutes(routes, req.path);
+    const branch = matchRoutes(ROUTE_LIST, req.path);
     const promises = branch.map(({ route, match }) => {
       if (route.loadData)
         return Promise.all(
@@ -58,7 +58,7 @@ export default async (
         <StaticRouter location={req.path} context={staticContext}>
           {/*
           // @ts-expect-error */}
-          {renderRoutes(routes)}
+          {renderRoutes(ROUTE_LIST)}
         </StaticRouter>
       </Provider>
     );

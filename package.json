@@ -31,7 +31,7 @@
     "stylelint",
     "prettier"
   ],
-  "author": "Welly Shen <hivoid19@gmail.com> (https://github.com/wellyshen)",
+  "author": "Rex Yang <liberty914@gmail.com> (https://github.com/liberty914)",
   "main": "index.ts",
   "engines": {
     "node": ">=10",
@@ -63,7 +63,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "yarn test"
+      "pre-push": "yarn --version"
     }
   },
   "lint-staged": {

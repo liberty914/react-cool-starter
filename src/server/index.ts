@@ -7,9 +7,9 @@ import hpp from "hpp";
 import favicon from "serve-favicon";
 import chalk from "chalk";
 
-import devServer from "./devServer";
-import ssr from "./ssr";
-import config from "../config";
+import { devServer } from "./dev-server";
+import { ssr } from "./ssr";
+import { ENV } from "../app/_bootstrap/env";
 
 const app = express();
 
@@ -32,6 +32,6 @@ if (__DEV__) devServer(app);
 app.get("*", ssr);
 
 // @ts-expect-error
-app.listen(config.PORT, config.HOST, (error) => {
+app.listen(ENV.PORT, ENV.HOST, (error) => {
   if (error) console.error(chalk.red(`==> 😭  OMG!!! ${error}`));
 });

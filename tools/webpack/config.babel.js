@@ -46,7 +46,7 @@ module.exports = {
   context: path.resolve(process.cwd()),
   entry: [
     isDev && "webpack-hot-middleware/client?reload=true",
-    "./src/client",
+    "./src/app/_bootstrap/main.tsx",
   ].filter(Boolean),
   optimization: {
     minimizer: [new TerserJSPlugin(), new OptimizeCSSAssetsPlugin()],
